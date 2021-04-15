@@ -7,29 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("bikes")
-public class DemoController {
+@RequestMapping("bikes3")
+public class DemoPostController {
 
     @Autowired
     private BikeService service;
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllBikes(){
         List<Bike> bikes = service.getAllBikes();
 
         return ResponseEntity.status(200).body(bikes);
     }
 
-    @GetMapping("/test")
-    public String hello(){
-        return "Hello";
+    @RequestMapping(value = "/bikes3", method = RequestMethod.POST)
+    @ResponseBody
+    public String postFoos() {
+        return "Post some Foos";
     }
 }
