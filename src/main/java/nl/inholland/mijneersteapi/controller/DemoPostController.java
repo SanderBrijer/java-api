@@ -19,7 +19,7 @@ public class DemoPostController {
     private BikeService service;
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getAllBikes(){
+    public ResponseEntity getAllBikes() {
         List<Bike> bikes = service.getAllBikes();
 
         return ResponseEntity.status(200).body(bikes);
@@ -27,7 +27,9 @@ public class DemoPostController {
 
     @RequestMapping(value = "/bikes3", method = RequestMethod.POST)
     @ResponseBody
-    public String postFoos() {
-        return "Post some Foos";
+    public String requestOTP(@RequestParam(value = "brand") String brand, @RequestParam(value = "model") String model, @RequestParam(value = "price") float price) {
+        Bike bike = new Bike(0, brand, model, price);
+        int id = service.addBike(bike);
+        return "Added new bike " + bike.getBrand() + " (" + bike.getModel() + ") (" + id + ")";
     }
 }
