@@ -18,10 +18,9 @@ public class DemoPostController {
     @Autowired
     private BikeService service;
 
-    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllBikes() {
-        List<Bike> bikes = service.getAllBikes();
-
+        Iterable<Bike> bikes = service.getAllBikes();
         return ResponseEntity.status(200).body(bikes);
     }
 

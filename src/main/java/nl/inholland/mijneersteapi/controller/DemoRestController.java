@@ -22,8 +22,8 @@ public class DemoRestController {
     private BikeService service;
 
     @GetMapping("")
-    public List<Bike> getAllBikes(){
-        List<Bike> bikes = service.getAllBikes();
+    public Iterable<Bike> getAllBikes(){
+        Iterable<Bike> bikes = service.getAllBikes();
 
         return service.getAllBikes();
     }

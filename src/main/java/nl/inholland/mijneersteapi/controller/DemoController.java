@@ -21,9 +21,13 @@ public class DemoController {
     @Autowired
     private BikeService service;
 
+    public DemoController(BikeService service) {
+        this.service = service;
+    }
+
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getAllBikes(){
-        List<Bike> bikes = service.getAllBikes();
+        Iterable<Bike> bikes = service.getAllBikes();
 
         return ResponseEntity.status(200).body(bikes);
     }
