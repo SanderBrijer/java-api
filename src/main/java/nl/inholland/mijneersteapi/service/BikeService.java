@@ -1,6 +1,7 @@
 package nl.inholland.mijneersteapi.service;
 
 import nl.inholland.mijneersteapi.repository.BikeRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import nl.inholland.mijneersteapi.model.Bike;
 import org.springframework.web.bind.annotation.RequestBody;
